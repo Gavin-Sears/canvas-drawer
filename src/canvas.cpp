@@ -80,7 +80,6 @@ void Canvas::end()
       }
    }
 
-   //_curColor = {0, 0, 0};
    _shape = 0;
    _vertices.clear();
 }
@@ -96,19 +95,10 @@ void Canvas::vertex(int x, int y)
    {
          y = _canvas.height();
    }
-   if (_shape == 1 || _shape == 2) 
-   {
-      
-      _vertices.push_back(Vertex{_curColor, (unsigned char)x, (unsigned char)y});
-   } 
-   else if (_shape == 3) 
+   if (_shape == 1 || _shape == 2 || _shape == 3) 
    {
       _vertices.push_back(Vertex{_curColor, (unsigned char)x, (unsigned char)y});
-      //if ((_vertices.size() % 3) == ) {
-
-      //}
-
-   } 
+   }
    else 
    {
       std::cout << "ERROR. Invalid drawing type selected" << std::endl;
@@ -329,27 +319,30 @@ void Canvas::triangle(Vertex a, Vertex b, Vertex c)
       miny = c.y;
    }
 
-   std::cout << minx << " " << maxx << " " << miny << " " << maxy << std::endl;
-
-   int gam;
-   int bet;
-   int alp;
-   Pixel color;
+   float gam;
+   float bet;
+   float alp;
+   Pixel triC;
    for (int x = minx; x < maxx; x++) 
    {
       for (int y = miny; y < maxy; y++) 
       {
-         gam = ( (b.y - a.y) * (x - a.x) - (b.x - a.x) * (y - a.y) ) / ( (b.y - a.y) * (c.x - a.x) - (b.x - a.x) * (c.y - a.y) );
-         bet = ( (c.y - a.y) * (x - a.x) - (c.x - a.x) * (y - a.y) ) / ( (c.y - a.y) * (b.x - a.x) - (c.x - a.x) * (b.y - a.y) );
-         alp = 1 - bet - gam;
+         gam = (float)( (b.y - a.y) * (x - a.x) - (b.x - a.x) * (y - a.y) ) / 
+         ( (b.y - a.y) * (c.x - a.x) - (b.x - a.x) * (c.y - a.y) );
 
-         color.r = alp * a.color.r;
-         color.g = bet * b.color.g;
-         color.b = gam * c.color.b;
+         bet = (float)( (c.y - a.y) * (x - a.x) - (c.x - a.x) * (y - a.y) ) / 
+         ( (c.y - a.y) * (b.x - a.x) - (c.x - a.x) * (b.y - a.y) );
+         alp = 1.0f - bet - gam;
 
-         if ((gam <= 1 && gam >= -1) && (bet <= 1 && bet >= -1) && (alp <= 1 && alp >= -1))
+         triC.r = (unsigned char)(alp * (int)a.color.r + bet * (int)b.color.r + gam * (int)c.color.r);
+         triC.g = (unsigned char)(alp * (int)a.color.g + bet * (int)b.color.g + gam * (int)c.color.g);
+         triC.b = (unsigned char)(alp * (int)a.color.b + bet * (int)b.color.b + gam * (int)c.color.b);
+
+         std::cout << alp << bet << gam << std::endl;
+
+         if ((gam <= 1 && gam >= 0) && (bet <= 1 && bet >= 0) && (alp <= 1 && alp >= 0))
          {
-            _canvas.set(x, y, color);
+            _canvas.set(y, x, triC);
          }
       }
    }
