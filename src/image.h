@@ -3,7 +3,8 @@
  * Date:
  * Description:
  ----------------------------------------------*/
-
+ 
+// Copyright 2021, Aline Normoyle, alinen
 
 #ifndef AGL_IMAGE_H_
 #define AGL_IMAGE_H_
@@ -64,7 +65,7 @@ class Image {
    *
    * Data will have size width * height * 4 (RGB)
    */
-  char* data() const;
+  unsigned char* data() const;
 
   /**
    * @brief Replace image RGB data
@@ -190,11 +191,29 @@ class Image {
   // return a bitmap version of this image
   Image bitmap(int size) const;
 
+  // Adds a border to the image
+  Image addBorder(int wid) const;
+
+  // Creates an image with all colors averaged with a chosen color
+  Image average(const Pixel& c) const;
+
+  // Recreates the picture using smaller, color filtered versions of itself
+  // Scale affects how detailed the subimages are.
+  // NOTE: You need to be careful with the dimensions of your images.
+  // One of the largest final images I was able to create had main 
+  // image dimensions (150 x 150), and (284 x 284) 
+  // for the sub image, which seems to imply any resolution
+  // nearing (42600 x 42600) will likely be pushing the limit.
+  Image tesselate(const Image& other, float scale) const;
+
   // Fill this image with a color
   void fill(const Pixel& c);
 
  private:
-   // todo
+   int _width;
+   int _height;
+
+   unsigned char* _data;
 };
 }  // namespace agl
 #endif  // AGL_IMAGE_H_

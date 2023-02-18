@@ -14,6 +14,28 @@
 namespace agl
 {
    enum PrimitiveType {UNDEFINED, LINES, TRIANGLES};
+
+   /**
+   * @brief Holder for a triangle
+   * 
+   */
+   struct Triangle {
+      unsigned char v1;
+      unsigned char v2;
+      unsigned char v3;
+   };
+
+   /**
+   * @brief Holder for a vertex
+   * 
+   */
+   struct Vertex {
+      Pixel color;
+
+      unsigned char x;
+      unsigned char y;
+   };
+
    class Canvas
    {
    public:
@@ -46,8 +68,18 @@ namespace agl
       // Fill the canvas with the given background color
       void background(unsigned char r, unsigned char g, unsigned char b);
 
+      // Bresenham formula, assume Width is greater than or equal to height, and slope is positive
+      void bresenham(Vertex a, Vertex b);
+
+      // Triangle formula
+      void triangle(Vertex a, Vertex b, Vertex c);
+
    private:
+      std::vector<Vertex> _vertices;
+      std::vector<Triangle> _triangles;
       Image _canvas;
+      Pixel _curColor;
+      int _shape;
    };
 }
 
