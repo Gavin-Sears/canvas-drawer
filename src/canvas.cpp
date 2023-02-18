@@ -340,7 +340,7 @@ void Canvas::triangle(Vertex a, Vertex b, Vertex c)
 
          std::cout << alp << bet << gam << std::endl;
 
-         if ((gam <= 1 && gam >= 0) && (bet <= 1 && bet >= 0) && (alp <= 1 && alp >= 0))
+         if ((gam <= 1.1f && gam >= -0.001f) && (bet <= 1.01f && bet >= -0.001f) && (alp <= 1.1f && alp >= -0.001f))
          {
             _canvas.set(y, x, triC);
          }
