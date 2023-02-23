@@ -14,6 +14,7 @@ Canvas::Canvas(int w, int h) : _canvas(w, h)
 Canvas::~Canvas()
 {
    _vertices.clear();
+   _triangles.clear();
 }
 
 // Saves image
@@ -208,7 +209,6 @@ void Canvas::bresenham(Vertex a, Vertex b)
    // Octant VII
    else if ((b.y < a.y) && (-1 > m))
    {
-      std::cout << H << std::endl;
       x = a.x;
       H = H * -1;
       F = 2 * W - H;
@@ -337,8 +337,6 @@ void Canvas::triangle(Vertex a, Vertex b, Vertex c)
          triC.r = (unsigned char)(alp * (int)a.color.r + bet * (int)b.color.r + gam * (int)c.color.r);
          triC.g = (unsigned char)(alp * (int)a.color.g + bet * (int)b.color.g + gam * (int)c.color.g);
          triC.b = (unsigned char)(alp * (int)a.color.b + bet * (int)b.color.b + gam * (int)c.color.b);
-
-         std::cout << alp << bet << gam << std::endl;
 
          if ((gam <= 1.1f && gam >= -0.001f) && (bet <= 1.01f && bet >= -0.001f) && (alp <= 1.1f && alp >= -0.001f))
          {
