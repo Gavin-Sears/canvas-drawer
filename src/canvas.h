@@ -1,7 +1,9 @@
 /*-----------------------------------------------
- * Author:
- * Date:
- * Description:
+ * Author: Gavin Sears
+ * Date: Fri, Feb 24
+ * Description: Image drawing tool. Supports the use of lines, triangles,
+ * isometric cubes, isometric tetrahedrons, and circles, and also allows
+ * for various specifications regarding gradients
  ----------------------------------------------*/
 
 #ifndef canvas_H_
@@ -13,7 +15,7 @@
 
 namespace agl
 {
-   enum PrimitiveType {UNDEFINED, LINES, TRIANGLES};
+   enum PrimitiveType {UNDEFINED, LINES, TRIANGLES, ISOCUBES, ISOTETS, CIRCLES};
 
    /**
    * @brief Holder for a triangle
@@ -40,6 +42,10 @@ namespace agl
    {
    public:
       Canvas(int w, int h);
+
+      // Specify gradient colors or if you want a gradient
+      void gradC(bool g, Pixel top, Pixel bottom);
+
       virtual ~Canvas();
 
       // Save to file
@@ -66,13 +72,22 @@ namespace agl
       void color(unsigned char r, unsigned char g, unsigned char b);
 
       // Fill the canvas with the given background color
-      void background(unsigned char r, unsigned char g, unsigned char b);
+      void background(unsigned char r, unsigned char g, unsigned char b, unsigned char r2, unsigned char g2, unsigned char b2);
 
-      // Bresenham formula, assume Width is greater than or equal to height, and slope is positive
+      // Bresenham formula, assume your octant is to the right of the y axis
       void bresenham(Vertex a, Vertex b);
 
       // Triangle formula
       void triangle(Vertex a, Vertex b, Vertex c);
+
+      // Isometric Cube
+      void isoCube(float height, Vertex pos);
+
+      // Isometric Tetrahedron
+      void isoTet(float height, Vertex pos);
+
+      // Circle
+      void circle(Vertex center, float radius);
 
    private:
       std::vector<Vertex> _vertices;
@@ -80,6 +95,9 @@ namespace agl
       Image _canvas;
       Pixel _curColor;
       int _shape;
+      Pixel _gradColort;
+      Pixel _gradColorb;
+      bool _grad;
    };
 }
 

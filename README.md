@@ -45,8 +45,40 @@ canvas-drawer/build $ ../bin/draw_art
 
 ## Supported primitives
 
-TODO: Document the custom primitives supported by your canvas class
+Isometric Cube
+
+<img src="Examples/Cube.png" width="200" height="200">
+
+Isometric Tetrahedron
+
+<img src="Examples/Tet.png" width="200" height="200">
+
+Circle
+
+<img src="Examples/CircleEx.png" width="200" height="200">
 
 ## Results
 
-TODO: Show artworks using your class
+Various circles with a gradient
+
+<img src="Examples/Circle.png" width-"400" height="400">
+
+These three variations of the image "dungeon," demonstrate how the different gradient specification work.
+
+Background gradient from white to black, and matching block gradient
+
+<img src="Examples/Dungeon.png" width-"400" height="400">
+
+Background gradient from black to white, and block gradient from white to green
+
+<img src="Examples/DungeonThree.png" width-"400" height="400">
+
+Background gradient from magenta to (0, 100, 100), and block gradient affected by background, with a gradient from white to black applied as well.
+
+<img src="Examples/DungeonTwo.png" width-"400" height="400">
+
+"Tarski's World"
+
+uses isometric tetradhedron, cubes, and a background gradient
+
+<img src="Examples/Tarski's_World.png" width-"400" height="400">
