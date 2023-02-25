@@ -61,7 +61,7 @@ Circle
 
 Various circles with a gradient
 
-<img src="Examples/Circle.png" width-"400" height="400">
+<img src="Examples/Circle.png" width="400" height="400">
 
 These three variations of the image "dungeon," demonstrate how the different gradient specification work.
 
@@ -79,6 +79,8 @@ Background gradient from magenta to (0, 100, 100), and block gradient affected b
 
 "Tarski's World"
 
-uses isometric tetradhedron, cubes, and a background gradient
+uses isometric tetradhedron, cubes, and a background gradient![Tarski's World](/Users/stephensears/cs313/canvas-drawer/Examples/Tarski's_World.png)
+
+<img src="Examples/Tarski's_World.png" width="400" height="400">
 
 <img src="Examples/Tarski's_World.png" width-"400" height="400">
