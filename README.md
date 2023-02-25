@@ -67,20 +67,18 @@ These three variations of the image "dungeon," demonstrate how the different gra
 
 Background gradient from white to black, and matching block gradient
 
-<img src="Examples/Dungeon.png" width-"400" height="400">
+<img src="Examples/Dungeon.png" width="400" height="400">
 
 Background gradient from black to white, and block gradient from white to green
 
-<img src="Examples/DungeonThree.png" width-"400" height="400">
+<img src="Examples/DungeonThree.png" width="400" height="400">
 
 Background gradient from magenta to (0, 100, 100), and block gradient affected by background, with a gradient from white to black applied as well.
 
-<img src="Examples/DungeonTwo.png" width-"400" height="400">
+<img src="Examples/DungeonTwo.png" width="400" height="400">
 
 "Tarski's World"
 
-uses isometric tetradhedron, cubes, and a background gradient![Tarski's World](/Users/stephensears/cs313/canvas-drawer/Examples/Tarski's_World.png)
+uses isometric tetradhedron, cubes, and a background gradient
 
 <img src="Examples/Tarski's_World.png" width="400" height="400">
-
-<img src="Examples/Tarski's_World.png" width-"400" height="400">
